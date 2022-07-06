@@ -1,3 +1,4 @@
+/*Stores all color variables in root, chose not to store margin variables for fine tweaking*/
 :root{
     --rust: #ee4e34;
     --beige: #e0a96d;
@@ -12,6 +13,7 @@ body {
     background-color: var(--neutral);
 }
 
+/*Constructed own header class, with flex and flex warp to respond properly to window resizing. Also included a pleasant gradient*/
 .header {
     display: flex;
     flex-wrap: wrap;
@@ -31,14 +33,20 @@ body {
     color:var(--secondary);
 }
 
+/*header children that are storing nav elements and secondary header text*/
 .header div {
     padding-top: 10px;
     margin-right: 20px;
     font-size: 20px;
 }
 
-.header div ul {
-    list-style-type: none;
+/*nav bar links, displayed inline for horizontal display*/
+.header div ul li {
+    display: inline-block;
+    margin-left: 25px;
+    padding: 4px;
+    border-left: var(--action) solid 5px;
+
 }
 
 .header a {
@@ -48,11 +56,13 @@ body {
     text-decoration: none;
 }
 
+/*added effect on hover for aesthetic*/
 .header a:hover {
     background-color: #9d3222;
     color:var(--action);
 }
 
+/*sets margins for all of body*/
 .body {
     margin: 50px 150px;
 }
@@ -72,12 +82,6 @@ body {
     text-align: center;
 }
 
-.imgTitle {
-    padding: 20px;
-    text-align: center;
-    font-size: 25px;
-}
-
 .aboutMe {
     border: var(--secondary) solid 5px;
     background: linear-gradient(220deg, var(--beige) 0%, #9e6528 75%);
@@ -91,17 +95,27 @@ body {
     background: linear-gradient(220deg, var(--beige) 0%, #9e6528 75%);
 }
 
+/*individual work sample container*/
 .sample {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+/*class for titles of images on work samples section*/
+.imgTitle {
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+}
+
+/*contains images in their container*/
 .sample div img {
     width: 100%;
     height: 100%;
 }
 
+/*on hover, causes images to grow a little*/
 .sample div img:hover {
     width: 101%;
     height: 101%;
@@ -126,14 +140,32 @@ body {
     background: linear-gradient(220deg, var(--beige) 0%, #9e6528 75%);
 }
 
-.header div ul li {
-    display: inline-block;
+.contact li {
     margin-left: 25px;
     padding: 4px;
     border-left: var(--action) solid 5px;
-
+    display: inline-block;
 }
 
+.contact ul {
+    padding: 10px;
+    display: table;
+    margin: 0 auto;
+}
+
+.contact a {
+    font-size: 24px;
+    padding: 5px;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.contact a:hover {
+    background-color: var(--beige);
+    color:var(--action);
+}
+
+/*When resolution drops below 1000px, nav bar switches to vertical and margins adjust for better fit*/
 @media screen and (max-width: 1000px){
     .header{
         flex-direction: column;
@@ -145,5 +177,15 @@ body {
     .body {
         margin: 50px;
     }
-    
+}
+
+/*Bunch of extra room when nav bar changes on the contact bar, so made it have a lower tolerance of 600px*/
+@media screen and (max-width:600px){
+    .contact{
+        flex-direction: column;
+    }
+    .contact li {
+        display: block;
+        margin:5px;
+    }
 }
